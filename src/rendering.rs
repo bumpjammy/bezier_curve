@@ -24,19 +24,19 @@ fn render_bezier_points(canvas: &mut WindowCanvas, current_points: &BezierPoints
     render_full_circle_pixels(canvas, &current_points.control.location, 5);
 
     canvas.set_draw_color((40, 40, 255));
-    if(current_points.start.pressed) {
+    if current_points.start.pressed {
         render_full_circle_pixels(canvas, &current_points.start.location, 5);
     }
-    if(current_points.end.pressed) {
+    if current_points.end.pressed {
         render_full_circle_pixels(canvas, &current_points.end.location, 5);
     }
-    if(current_points.control.pressed) {
+    if current_points.control.pressed {
         render_full_circle_pixels(canvas, &current_points.control.location, 5);
     }
 }
 
 fn render_lines(canvas: &mut WindowCanvas, current_points: &BezierPoints, frame: i32) {
-    if(frame > 120) {
+    if frame > 120 {
         return;
     }
     canvas.set_draw_color(Color::RGB(50, 50, 50));
@@ -73,7 +73,7 @@ fn render_demo_points(canvas: &mut WindowCanvas, current_bezier_points: &BezierP
     render_full_circle_pixels(canvas, &start_line_point, 2);
     render_full_circle_pixels(canvas, &end_line_point, 2);
     canvas.set_draw_color(Color::RGB(255, 0, 0));
-    if(frame < 120) {
+    if frame < 120 {
         canvas.draw_line(start_line_point, end_line_point).expect("Failed to draw line!");
     }
 

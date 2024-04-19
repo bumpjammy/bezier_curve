@@ -24,36 +24,36 @@ pub(crate) fn run_app_loop(canvas: &mut WindowCanvas, event_pump: &mut EventPump
                 },
                 sdl2::event::Event::MouseButtonDown {x, y, ..} => {
                     let mouse_point = Point::new(x, y);
-                    if(get_distance_between_points(&current_points.start.location, &mouse_point) <= 5) {
+                    if get_distance_between_points(&current_points.start.location, &mouse_point) <= 5 {
                         current_points.start.pressed = true;
                     }
-                    else if(get_distance_between_points(&current_points.end.location, &mouse_point) <= 5) {
+                    else if get_distance_between_points(&current_points.end.location, &mouse_point) <= 5 {
                         current_points.end.pressed = true;
                     }
-                    else if(get_distance_between_points(&current_points.control.location, &mouse_point) <= 5) {
+                    else if get_distance_between_points(&current_points.control.location, &mouse_point) <= 5 {
                         current_points.control.pressed = true;
                     }
                 },
                 sdl2::event::Event::MouseButtonUp {..} => {
-                    if(current_points.start.pressed) {
+                    if current_points.start.pressed {
                         current_points.start.pressed = false;
                     }
-                    if(current_points.end.pressed) {
+                    if current_points.end.pressed {
                         current_points.end.pressed = false;
                     }
-                    if(current_points.control.pressed) {
+                    if current_points.control.pressed {
                         current_points.control.pressed = false;
                     }
                 },
                 sdl2::event::Event::MouseMotion {x, y, ..} => {
                     let mouse_point = Point::new(x, y);
-                    if(current_points.start.pressed) {
+                    if current_points.start.pressed {
                         current_points.start.location = mouse_point;
                     }
-                    else if(current_points.end.pressed) {
+                    else if current_points.end.pressed {
                         current_points.end.location = mouse_point;
                     }
-                    else if(current_points.control.pressed) {
+                    else if current_points.control.pressed {
                         current_points.control.location = mouse_point;
                     }
                 }
@@ -61,7 +61,7 @@ pub(crate) fn run_app_loop(canvas: &mut WindowCanvas, event_pump: &mut EventPump
             }
         }
 
-        if(current_points.start.pressed || current_points.end.pressed || current_points.control.pressed) {
+        if current_points.start.pressed || current_points.end.pressed || current_points.control.pressed {
             frame = 1;
             points = vec![];
         } else {
